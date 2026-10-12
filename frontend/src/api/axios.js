@@ -1,5 +1,3 @@
-// This creates one shared axios instance that automatically attaches
-// the student's login token to every request.
 import axios from "axios";
 
 const api = axios.create({
@@ -14,9 +12,7 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// If the backend says our token is invalid/expired (401), the session is
-// stale. Clear it and send the student back to login instead of letting
-// every subsequent request fail silently.
+
 api.interceptors.response.use(
   (response) => response,
   (error) => {
